@@ -1,0 +1,76 @@
+# ─────────────────────────────────────────────
+# Build & dépendances Java / Maven / Gradle
+# ─────────────────────────────────────────────
+/target/
+/out/
+/.idea/
+/.classpath
+.project
+.settings/
+.mvn/
+!mvnw
+!mvnw.cmd
+.gradle/
+build/
+dependency-reduced-pom.xml
+
+# Logs
+*.log
+logs/
+mqjms.log*
+hs_err_pid*.log
+
+# Fichiers temporaires
+*.tmp
+*.swp
+*~
+*.bak
+
+# Configuration d'exécution locale
+*.iml
+*.ipr
+*.iws
+/.vscode/
+/*.launch
+*.mqsc
+
+# Docker / Compose résultats
+*.pid
+*.pid.lock
+docker-data/
+docker-compose.override.yml
+
+# Scripts générés ou binaires
+*.bat
+*.ps1
+*.sh
+*.exe
+
+# OS cruft
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Clés / certificats
+*.pem
+*.crt
+*.key
+
+# Test coverage & rapports
+/coverage/
+/jacoco.exec
+/target/site/
+
+# IDE JetBrains run configs
+.idea/runConfigurations/
+
+# Sonar / analyse statique
+.sonar/

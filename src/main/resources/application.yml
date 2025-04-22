@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: QM-Router-API
+  logging:
+    level:
+      root: INFO  # Définit le niveau global des logs
+      org.springframework.web: INFO  # Logs détaillés pour les requêtes web
+      org.springframework.jms: DEBUG
+      com.ibm.mq: DEBUG
+    pattern:
+      console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg%n"  # Format des logs
+jms:
+  listener:
+    concurrency: 5-10
+    max-concurrency: 10
+  pub-sub-domain: false
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+api:
+  name: "QM Router API"
+  version: 1.0.0
