@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:mqroutingdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+ibm:
+  mq:
+    queueManager: QM1
+    channel: DEV.APP.SVRCONN
+    connName: localhost(1414)
+    user: app
+    password: passw0rd
+    queue: DEV.QUEUE.2
+    timeout:
+      connect: 10
+      reconnect: 30
+      receive: 5000
+
+
