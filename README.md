@@ -92,8 +92,7 @@ mq-routing-application/
 │       ├── java/com/banque/mq/
 │       │   ├── config/
 │       │   ├── controller/
-│       │   ├── dto/
-│       │   ├── entity/
+│       │   ├── model/
 │       │   ├── exception/
 │       │   ├── listener/
 │       │   ├── mapper/

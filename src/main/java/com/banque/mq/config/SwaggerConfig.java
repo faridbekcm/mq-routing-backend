@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configuration de la documentation Swagger/OpenAPI pour l’API REST exposée par l’application.
+ */
 @Configuration
 public class SwaggerConfig {
 
@@ -15,6 +18,10 @@ public class SwaggerConfig {
     @Value("${api.version}")
     private String apiVersion;
 
+    /**
+     * Méthode pour initialiser la configuration OpenAPI utilisée pour générer la documentation Swagger de l'application.
+     * @return OpenAPI
+     */
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
