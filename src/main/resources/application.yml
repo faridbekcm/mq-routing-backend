@@ -1,28 +1,53 @@
+# ==========================
+# Configuration du profil actif et nom de l'application
+# ==========================
 spring:
   profiles:
+    # Profil Spring Boot actif (ex. : local, dev, prod)
     active: local
   application:
+    # Nom de l'application Spring Boot (utile pour les logs ou monitoring)
     name: QM-Router-API
   logging:
     level:
-      root: INFO  # Définit le niveau global des logs
-      org.springframework.web: INFO  # Logs détaillés pour les requêtes web
+      # Niveau de log par défaut pour toute l'application
+      root: INFO
+      # Niveau de log pour les contrôleurs web Spring (permet d’avoir les requêtes HTTP loggées)
+      org.springframework.web: INFO
+      # Niveau de log pour les composants JMS (utile pour le debug des échanges MQ)
       org.springframework.jms: DEBUG
+      # Niveau de log pour les classes IBM MQ (pour surveiller les échanges de bas niveau)
       com.ibm.mq: DEBUG
     pattern:
-      console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg%n"  # Format des logs
+      # Format personnalisé des logs en console (timestamp, logger, message)
+      console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg%n"
+
+# ==========================
+# Configuration JMS (Java Message Service)
+# ==========================
 jms:
   listener:
+    # Nombre de threads minimum et maximum pour l’écoute des messages MQ
     concurrency: 5-10
+    # Limite maximale du nombre de threads simultanés autorisés
     max-concurrency: 10
+  # false = mode point-à-point (file), true = mode publication/souscription (topic)
   pub-sub-domain: false
 
+# ==========================
+# Configuration de la documentation OpenAPI/Swagger
+# ==========================
 springdoc:
   api-docs:
+    # URL pour accéder au fichier JSON OpenAPI
     path: /api-docs
   swagger-ui:
+    # URL pour accéder à l'interface Swagger UI
     path: /swagger-ui.html
 
+# ==========================
+# Métadonnées de l’API (utilisées par Swagger)
+# ==========================
 api:
-  name: "QM Router API"
-  version: 1.0.0
+  name: "QM Router API"  # Nom affiché dans la documentation Swagger
+  version: 1.0.0         # Version de l’API

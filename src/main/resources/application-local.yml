@@ -1,30 +1,54 @@
+# ==========================
+# Configuration de la base de données
+# ==========================
 spring:
   datasource:
+    # URL de la base de données H2 en mémoire (temporaire, utile pour les tests/développement)
     url: jdbc:h2:mem:mqroutingdb
+    # Driver JDBC utilisé pour se connecter à la base H2
     driver-class-name: org.h2.Driver
+    # Identifiants de connexion à la base (par défaut pour H2)
     username: sa
-    password: 
+    password:
+
   jpa:
+    # Dialecte utilisé par Hibernate pour générer les requêtes SQL compatibles H2
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
+      # Création automatique du schéma de base : ici `update` signifie que les tables sont créées/mises à jour à chaque démarrage
       ddl-auto: update
+    # Affichage des requêtes SQL générées dans la console (utile pour le debug)
     show-sql: true
+
   h2:
     console:
+      # Active la console web H2 (interface graphique pour visualiser la base)
       enabled: true
+      # URL d’accès à la console H2 : http://localhost:8080/h2-console
       path: /h2-console
 
+# ==========================
+# Configuration IBM MQ
+# ==========================
 ibm:
   mq:
+    # Nom du gestionnaire de file (Queue Manager) sur le serveur MQ
     queueManager: QM1
+    # Nom du canal MQ utilisé pour établir la communication
     channel: DEV.APP.SVRCONN
+    # Adresse de connexion à MQ : hôte(port), exemple : localhost(1414)
     connName: localhost(1414)
+    # Identifiant et mot de passe de l’application cliente MQ
     user: app
     password: passw0rd
+    # Nom de la file sur laquelle les messages sont reçus
     queue: DEV.QUEUE.2
+
+    # Configuration des délais (timeouts) pour les connexions MQ
     timeout:
+      # Timeout de connexion initiale (en secondes)
       connect: 10
+      # Délai maximum de reconnexion automatique après coupure (en secondes)
       reconnect: 30
+      # Timeout de réception d’un message depuis la file (en millisecondes)
       receive: 5000
-
-
